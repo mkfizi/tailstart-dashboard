@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- SEO -->
+    <meta name="title" content="Tailstart">
+    <meta name="description" content="TailwindCSS library of multipurpose starter kits.">
+    <meta name="robots" content="index, follow">
+ 
+    <!-- Facebook open graph -->
+    <meta property="og:url" content="https://mkfizi.dev/tailstart">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tailstart">
+    <meta property="og:image" content="https://mkfizi.dev/tailstart/src/images/fb-og.jpg">
+    <meta name="description" content="TailwindCSS library of multipurpose starter kits.">
+    <meta property="og:site_name" content="Tailstart">
+
+    <!-- Twitter cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@mkfizi">
+    <meta name="twitter:creator" content="@mkfizi">
+    <meta name="twitter:url" content="https://mkfizi.dev/tailstart">
+    <meta name="twitter:title" content="Tailstart">
+    <meta name="twitter:description" content="TailwindCSS library of multipurpose starter kits.">
+    <meta name="twitter:image" content="https://mkfizi.dev/tailstart/src/images/tw-card.jpg">
+
+    <!-- Favicon -->
+    <link rel="manifest" href="./site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./src/css/app.css">
+    <link rel="preload" href="./src/css/app.css" as="style">
+
+    <!-- Scripts -->
+    <script src="./src/js/app.js" defer></script>
+    <link rel="preload" href="./src/js/app.js" as="script">
+
+    <!-- 
+        Handle dark mode toggle when the page is loaded.
+
+        These codes below are called here instead of being inside app.js 
+        to avoid FOUC should app.js type is defined as a module. 
+    -------------------------------------------------------------------------->
+    <script>
+        if (localStorage.theme === "light" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: light)").matches)) {
+            localStorage.theme = 'light';
+            document.documentElement.classList.remove("dark");
+        } else if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            localStorage.theme = 'dark';
+            document.documentElement.classList.add("dark")
+        };
+    </script>
+
+    <title>Tailstart | Dashboard</title>
+</head>
+<body class="relative flex min-h-screen antialiased bg-white dark:bg-neutral-900">
+
+    <!-- Sidebar menu -->
+    <aside id="sidebar-menu" class="fixed top-0 left-0 z-20 invisible hidden w-screen h-screen lg:sticky lg:visible lg:block lg:w-64 lg:bg-transparent bg-neutral-500/50 lg:shrink-0">
+        <div class="fixed top-0 left-0 h-full p-4 overflow-y-auto bg-white border-r shadow sm:px-8 lg:border-r border-neutral-300 dark:border-neutral-700 lg:sticky w-72 lg:w-64 lg:bg-transparent lg:dark:bg-transparent lg:shadow-none dark:bg-neutral-800" aria-labelledby="sidebar-menu">
+
+            <!-- Sidebar menu close button -->
+            <button id="sidebar-menu-close" type="button" class="absolute right-4 top-4 group lg:hidden" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Close sidebar menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-500 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M18 6l-12 12" />
+                    <path d="M6 6l12 12" />
+                </svg>
+            </button>
+
+            <!-- Logo -->
+            <a href="#" class="flex gap-4 mb-8">
+                <img src="./src/images/logo.png" alt="Tailstart logo" class="w-6 h-6 dark:hidden">
+                <img src="./src/images/logo-dark.png" alt="Tailstart logo" class="hidden w-6 h-6 dark:block">
+                <span class="text-lg font-bold text-black dark:text-white">Tailstart</span>
+            </a>
+            
+            <!-- Sidebar menu link -->
+            <ul class="space-y-6">
+                <li>
+                    <a href="#" class="block font-semibold text-black dark:text-white">Dashboard</a>
+                </li>
+                <li>
+                    <button id="orders-accordion-toggle" data-accordion="sidebar-menu" aria-controls="orders" aria-expanded="true" type="button" class="flex justify-between w-full font-semibold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white">
+                        <span>Orders</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-labelledby="orders" class="w-6 h-6 rotate-180" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M6 9l6 6l6 -6" />
+                        </svg>
+                    </button>
+                    <ul id="orders" class="mt-4 ml-4 space-y-3" aria-hidden="false">
+                        <li>
+                            <a href="#" class="block text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white">Create new</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white">View All</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <button id="products-accordion-toggle" data-accordion="sidebar-menu" aria-controls="products" aria-expanded="false" type="button" class="flex justify-between w-full font-semibold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white">
+                        <span>Products</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-labelledby="products" class="w-6 h-6" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M6 9l6 6l6 -6" />
+                        </svg>
+                    </button>
+                    <ul id="products" class="invisible hidden mt-4 ml-4 space-y-3" aria-hidden="true">
+                        <li>
+                            <a href="#" class="block text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white">Create new</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white">View All</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <button id="customers-accordion-toggle" data-accordion="sidebar-menu" aria-controls="customers" aria-expanded="false" type="button" class="flex justify-between w-full font-semibold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white">
+                        <span>Customers</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-labelledby="customers" class="w-6 h-6" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M6 9l6 6l6 -6" />
+                        </svg>
+                    </button>
+                    <ul id="customers" class="invisible hidden mt-4 ml-4 space-y-3" aria-hidden="true">
+                        <li>
+                            <a href="#" class="block text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white">Create new</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white">View All</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            
+        </div>
+    </aside>
+
+    <div class="relative flex-auto w-full">
+
+        <!-- Navbar -->
+        <nav id="navbar" class="sticky top-0 z-10 bg-white border-b border-transparent dark:border-transparent dark:bg-neutral-900">
+            <div class="flex items-center justify-between w-full h-16 px-4 mx-auto lg:justify-end sm:px-8">
+                
+                <!-- Sidebar menu open button -->
+                <button id="sidebar-menu-open" type="button" class="group lg:hidden" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Open sidebar menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-500 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M4 6l16 0" />
+                        <path d="M4 12l16 0" />
+                        <path d="M4 18l16 0" />
+                    </svg>
+                </button>
+    
+                <div class="flex gap-8">
+                    <div class="flex items-center gap-4">
+
+                        <!-- Notifications menu -->
+                        <div class="inline-block">
+                            <div class="flex items-center">
+                                <button id="notifications-menu-toggle" type="button" class="relative group" aria-controls="notifications-menu" aria-expanded="false" aria-label="Toggle notifications menu">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
+                                        <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
+                                    </svg>
+
+                                    <!-- Notification alert -->
+                                    <div class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></div>
+                                </button>
+                            </div>
+                            <ul id="notifications-menu" class="absolute sm:right-8 right-4 z-10 w-72 divide-y invisible hidden divide-neutral-200 dark:divide-neutral-800 p-0.5 top-16 mt-2 overflow-y-auto bg-white border rounded-md max-h-64 border-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 drop-shadow-md" aria-hidden="true">
+                                <li class="hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                                    <a href="#" class="block px-4 py-2 space-y-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">
+                                        <span class="block">You have received a new sale order with amount of $104.85.</span>
+                                        <span class="block text-right"><small>30 minutes ago</small></span>
+                                    </a>
+                                </li>
+                                <li class="hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                                    <a href="#" class="block px-4 py-2 space-y-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">
+                                        <span class="block">You have received a new sale order with amount of $423.18.</span>
+                                        <span class="block text-right"><small>1 hour ago</small></span>
+                                    </a>
+                                </li>
+                                <li class="hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                                    <a href="#" class="block px-4 py-2 space-y-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">
+                                        <span class="block">You have received a new sale order with amount of $2314.72.</span>
+                                        <span class="block text-right"><small>4 hours ago</small></span>
+                                    </a>
+                                </li>
+                                <li class="hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                                    <a href="#" class="block px-4 py-2 space-y-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">
+                                        <span class="block">You have received a new sale order with amount of $99.18</span>
+                                        <span class="block text-right"><small>3 days ago</small></span>
+                                    </a>
+                                </li>
+                                <li class="hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                                    <a href="#" class="block px-4 py-2 space-y-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">
+                                        <span class="block">You have received a new sale order with amount of $267.90.</span>
+                                        <span class="block text-right"><small>7 days ago</small></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Dark mode toggle button -->
+                        <button id="dark-mode-toggle" type="button" class="group" aria-label="Toggle dark mode">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 dark:hidden stroke-neutral-600 group-hover:stroke-black" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                                <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="hidden w-6 h-6 dark:block dark:stroke-neutral-400 group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+                            </svg>
+                        </button>
+                        
+                        <a href="https://github.com/mkfizi/tailstart-dashboard" target="_blank" class="group" aria-label="Go to Github repository">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+                            </svg>
+                        </a>
+    
+                    </div>
+                    
+                    <!-- Settings menu -->
+                    <div class="inline-block">
+                        <button id="settings-menu-toggle" type="button" class="flex gap-2 px-4 py-2 text-base font-semibold text-white bg-black border border-black rounded-md hover:border-neutral-700 hover:bg-neutral-700 dark:bg-neutral-600 dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500 disabled:opacity-50 disabled:pointer-events-none" aria-controls="settings-menu" aria-expanded="false" aria-label="Toggle settings menu">
+                            <span>Settings</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-labelledby="settings-menu">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M6 9l6 6l6 -6" />
+                            </svg>
+                        </button>
+                        <ul id="settings-menu" class="absolute right-4 sm:right-8 z-10 invisible hidden w-48 p-0.5 top-16 mt-2 overflow-y-auto bg-white border rounded-md max-h-64 border-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 drop-shadow-md" aria-hidden="true">
+                            <li class="hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                                <a href="#" class="block px-4 py-2 text-base text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">Profile</a>
+                            </li>
+                            <li class="hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                                <a href="#" class="block px-4 py-2 text-base text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">Preferences</a>
+                            </li>
+                            <li class="hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                                <a href="#" class="block px-4 py-2 text-base text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </nav>
+
+        <!-- Content -->
+        <main class="w-full px-4 pt-16 pb-32 mx-auto lg:max-w-3xl xl:max-w-screen-xl sm:px-8">
+            <div class="space-y-16">
+                <div class="space-y-8">
+                    <p class="text-2xl font-extrabold text-black sm:text-3xl lg:text-4xl dark:text-white">Dashboard</p>
+
+                    <!-- Analytic -->
+                    <section class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                        <div class="flex gap-4 p-4 bg-white border rounded-md border-neutral-300 dark:border-neutral-700 dark:bg-neutral-800">
+                            <div class="self-center p-4 rounded-md bg-neutral-200 dark:bg-neutral-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                    <path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1 -1.8 -1" />
+                                    <path d="M12 7v10" />
+                                </svg>
+                            </div>
+                            <div class="flex-1 space-y-1 text-right shrink-0">
+                                <p class="text-base text-neutral-700 dark:text-neutral-300"><strong>Monthly Sales</strong></p>
+                                <p class="text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">$50749.83</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 p-4 bg-white border rounded-md border-neutral-300 dark:border-neutral-700 dark:bg-neutral-800">
+                            <div class="self-center p-4 rounded-md bg-neutral-200 dark:bg-neutral-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                                    <path d="M17 17h-11v-14h-2" />
+                                    <path d="M6 5l14 1l-1 7h-13" />
+                                </svg>
+                            </div>
+                            <div class="flex-1 space-y-1 text-right shrink-0">
+                                <p class="text-base text-neutral-700 dark:text-neutral-300"><strong>Monthly Orders</strong></p>
+                                <p class="text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">319</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 p-4 bg-white border rounded-md border-neutral-300 dark:border-neutral-700 dark:bg-neutral-800">
+                            <div class="self-center p-4 rounded-md bg-neutral-200 dark:bg-neutral-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M3 12m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
+                                    <path d="M9 8m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
+                                    <path d="M15 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
+                                    <path d="M4 20l14 0" />
+                                </svg>
+                            </div>
+                            <div class="flex-1 space-y-1 text-right shrink-0">
+                                <p class="text-base text-neutral-700 dark:text-neutral-300"><strong>Monthly Traffic</strong></p>
+                                <p class="text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">24203</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 p-4 bg-white border rounded-md border-neutral-300 dark:border-neutral-700 dark:bg-neutral-800">
+                            <div class="self-center p-4 rounded-md bg-neutral-200 dark:bg-neutral-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8" />
+                                    <path d="M14 19l2 2l4 -4" />
+                                    <path d="M9 8h4" />
+                                    <path d="M9 12h2" />
+                                </svg>
+                            </div>
+                            <div class="flex-1 space-y-1 text-right shrink-0">
+                                <p class="text-base text-neutral-700 dark:text-neutral-300"><strong>Pending Orders</strong></p>
+                                <p class="text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">49</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Table -->
+                <section class="space-y-8">
+                    <p class="mb-8 text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">Overview</p>
+                    <div class="overflow-hidden bg-white border rounded-md border-neutral-300 dark:border-neutral-700 dark:bg-neutral-800">
+                        <div class="overflow-x-auto border-b border-neutral-300 dark:border-neutral-700">
+                            <table class="w-full divide-y whitespace-nowrap divide-neutral-300 dark:divide-neutral-700">
+                                <thead class="text-left bg-neutral-100 dark:bg-neutral-800">
+                                    <tr>
+                                        <th class="p-4 text-base font-bold text-neutral-700 dark:text-neutral-300">No</th> 
+                                        <th class="p-4 text-base font-bold text-neutral-700 dark:text-neutral-300">Order ID</th> 
+                                        <th class="p-4 text-base font-bold text-neutral-700 dark:text-neutral-300">Customer</th> 
+                                        <th class="p-4 text-base font-bold text-neutral-700 dark:text-neutral-300">Amount</th> 
+                                        <th class="p-4 text-base font-bold text-neutral-700 dark:text-neutral-300">Status</th> 
+                                        <th class="p-4 text-base font-bold text-neutral-700 dark:text-neutral-300">Date</th> 
+                                        <th class="p-4 text-base font-bold text-neutral-700 dark:text-neutral-300">Actions</th> 
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-neutral-300 dark:divide-neutral-700 dark:bg-neutral-900">
+                                    <tr>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">31</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <a href="#" class="block text-base font-semibold underline text-neutral-500 dark:text-neutral-400 hover:text-black hover:dark:text-white">ORD5011</a>
+                                        </td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">Matthew Sanders</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">$3780.45</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <span class="inline-block px-2 py-px text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">
+                                                <span class="flex items-center gap-2">
+                                                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                                                    <span>Completed</span>
+                                                </span>
+                                            </span>
+                                        </td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">12 January 2023</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <span class="flex gap-2">
+                                                <a href="#" class="group" aria-label="Edit data">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                                                        <path d="M16 5l3 3" />
+                                                    </svg>
+                                                </a>
+                                                <a href="#" class="group" aria-label="Delete data">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M4 7l16 0" />
+                                                        <path d="M10 11l0 6" />
+                                                        <path d="M14 11l0 6" />
+                                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                                    </svg>
+                                                </a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">32</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <a href="#" class="block text-base font-semibold underline text-neutral-500 dark:text-neutral-400 hover:text-black hover:dark:text-white">ORD5012</a>
+                                        </td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">Zachary Sanders</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">$819.20</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <span class="inline-block px-2 py-px text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">
+                                                <span class="flex items-center gap-2">
+                                                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                                                    <span>Completed</span>
+                                                </span>
+                                            </span>
+                                        </td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">11 January 2023</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <span class="flex gap-2">
+                                                <a href="#" class="group" aria-label="Edit data">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                                                        <path d="M16 5l3 3" />
+                                                    </svg>
+                                                </a>
+                                                <a href="#" class="group" aria-label="Delete data">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M4 7l16 0" />
+                                                        <path d="M10 11l0 6" />
+                                                        <path d="M14 11l0 6" />
+                                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                                    </svg>
+                                                </a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">33</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <a href="#" class="block text-base font-semibold underline text-neutral-500 dark:text-neutral-400 hover:text-black hover:dark:text-white">ORD5013</a>
+                                        </td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">Brian Haner Jr.</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">$451.89</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <span class="inline-block px-2 py-px text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">
+                                                <span class="flex items-center gap-2">
+                                                    <span class="w-2 h-2 bg-yellow-500 rounded-full"></span>
+                                                    <span>In Progress</span>
+                                                </span>
+                                            </span>
+                                        </td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">08 January 2023</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <span class="flex gap-2">
+                                                <a href="#" class="group" aria-label="Edit data">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                                                        <path d="M16 5l3 3" />
+                                                    </svg>
+                                                </a>
+                                                <a href="#" class="group" aria-label="Delete data">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M4 7l16 0" />
+                                                        <path d="M10 11l0 6" />
+                                                        <path d="M14 11l0 6" />
+                                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                                    </svg>
+                                                </a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">34</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <a href="#" class="block text-base font-semibold underline text-neutral-500 dark:text-neutral-400 hover:text-black hover:dark:text-white">ORD5014</a>
+                                        </td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">Matt Wendy</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">$121.64</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <span class="inline-block px-2 py-px text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">
+                                                <span class="flex items-center gap-2">
+                                                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                                                    <span>Completed</span>
+                                                </span>
+                                            </span>
+                                        </td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">06 January 2023</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <span class="flex gap-2">
+                                                <a href="#" class="group" aria-label="Edit data">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                                                        <path d="M16 5l3 3" />
+                                                    </svg>
+                                                </a>
+                                                <a href="#" class="group" aria-label="Delete data">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M4 7l16 0" />
+                                                        <path d="M10 11l0 6" />
+                                                        <path d="M14 11l0 6" />
+                                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                                    </svg>
+                                                </a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">35</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <a href="#" class="block text-base font-semibold underline text-neutral-500 dark:text-neutral-400 hover:text-black hover:dark:text-white">ORD5015</a>
+                                        </td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">Justin Sane</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">$789.30</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <span class="inline-block px-2 py-px text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">
+                                                <span class="flex items-center gap-2">
+                                                    <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                                                    <span>Cancelled</span>
+                                                </span>
+                                            </span>
+                                        </td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">06 January 2023</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <span class="flex gap-2">
+                                                <a href="#" class="group" aria-label="Edit data">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                                                        <path d="M16 5l3 3" />
+                                                    </svg>
+                                                </a>
+                                                <a href="#" class="group" aria-label="Delete data">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M4 7l16 0" />
+                                                        <path d="M10 11l0 6" />
+                                                        <path d="M14 11l0 6" />
+                                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                                    </svg>
+                                                </a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">36</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <a href="#" class="block text-base font-semibold underline text-neutral-500 dark:text-neutral-400 hover:text-black hover:dark:text-white">ORD5016</a>
+                                        </td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">Dameon Ash</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">$2549.35</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <span class="inline-block px-2 py-px text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">
+                                                <span class="flex items-center gap-2">
+                                                    <span class="w-2 h-2 bg-yellow-500 rounded-full"></span>
+                                                    <span>In Progress</span>
+                                                </span>
+                                            </span>
+                                        </td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">03 January 2023</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <span class="flex gap-2">
+                                                <a href="#" class="group" aria-label="Edit data">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                                                        <path d="M16 5l3 3" />
+                                                    </svg>
+                                                </a>
+                                                <a href="#" class="group" aria-label="Delete data">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M4 7l16 0" />
+                                                        <path d="M10 11l0 6" />
+                                                        <path d="M14 11l0 6" />
+                                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                                    </svg>
+                                                </a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">37</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <a href="#" class="block text-base font-semibold underline text-neutral-500 dark:text-neutral-400 hover:text-black hover:dark:text-white">ORD5017</a>
+                                        </td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">Jonathan Seward</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">$568.17</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <span class="inline-block px-2 py-px text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">
+                                                <span class="flex items-center gap-2">
+                                                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                                                    <span>Completed</span>
+                                                </span>
+                                            </span>
+                                        </td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">01 January 2023</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <span class="flex gap-2">
+                                                <a href="#" class="group" aria-label="Edit data">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                                                        <path d="M16 5l3 3" />
+                                                    </svg>
+                                                </a>
+                                                <a href="#" class="group" aria-label="Delete data">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M4 7l16 0" />
+                                                        <path d="M10 11l0 6" />
+                                                        <path d="M14 11l0 6" />
+                                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                                    </svg>
+                                                </a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">38</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <a href="#" class="block text-base font-semibold underline text-neutral-500 dark:text-neutral-400 hover:text-black hover:dark:text-white">ORD5018</a>
+                                        </td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">James Sullivan</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">$2481.99</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <span class="inline-block px-2 py-px text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">
+                                                <span class="flex items-center gap-2">
+                                                    <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                                                    <span>Cancelled</span>
+                                                </span>
+                                            </span>
+                                        </td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">28 December 2022</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <span class="flex gap-2">
+                                                <a href="#" class="group" aria-label="Edit data">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                                                        <path d="M16 5l3 3" />
+                                                    </svg>
+                                                </a>
+                                                <a href="#" class="group" aria-label="Delete data">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M4 7l16 0" />
+                                                        <path d="M10 11l0 6" />
+                                                        <path d="M14 11l0 6" />
+                                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                                    </svg>
+                                                </a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">39</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <a href="#" class="block text-base font-semibold underline text-neutral-500 dark:text-neutral-400 hover:text-black hover:dark:text-white">ORD5019</a>
+                                        </td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">Arin Ilejay</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">$1125.63</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <span class="inline-block px-2 py-px text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">
+                                                <span class="flex items-center gap-2">
+                                                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                                                    <span>Completed</span>
+                                                </span>
+                                            </span>
+                                        </td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">27 December 2022</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <span class="flex gap-2">
+                                                <a href="#" class="group" aria-label="Edit data">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                                                        <path d="M16 5l3 3" />
+                                                    </svg>
+                                                </a>
+                                                <a href="#" class="group" aria-label="Delete data">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M4 7l16 0" />
+                                                        <path d="M10 11l0 6" />
+                                                        <path d="M14 11l0 6" />
+                                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                                    </svg>
+                                                </a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">40</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <a href="#" class="block text-base font-semibold underline text-neutral-500 dark:text-neutral-400 hover:text-black hover:dark:text-white">ORD5020</a>
+                                        </td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">Brooks Wackerman</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">$991.72</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <span class="inline-block px-2 py-px text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">
+                                                <span class="flex items-center gap-2">
+                                                    <span class="w-2 h-2 bg-yellow-500 rounded-full"></span>
+                                                    <span>In Progress</span>
+                                                </span>
+                                            </span>
+                                        </td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">12 January 2023</td>
+                                        <td class="px-4 py-3 text-base text-neutral-700 dark:text-neutral-300">
+                                            <span class="flex gap-2">
+                                                <a href="#" class="group" aria-label="Edit data">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                                                        <path d="M16 5l3 3" />
+                                                    </svg>
+                                                </a>
+                                                <a href="#" class="group" aria-label="Delete data">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                        <path d="M4 7l16 0" />
+                                                        <path d="M10 11l0 6" />
+                                                        <path d="M14 11l0 6" />
+                                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                                    </svg>
+                                                </a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="flex flex-col items-center justify-center gap-2 p-4 lg:flex-row lg:justify-between bg-neutral-100 dark:bg-neutral-800">
+                            <div class="flex gap-2 lg:order-2">
+                                <a href="#" class="inline-block p-px text-base font-semibold text-black bg-transparent border border-black rounded-md dark:text-white hover:border-neutral-700 hover:text-white hover:bg-neutral-700 dark:bg-transparent dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500" aria-label="Got to first">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M11 7l-5 5l5 5" />
+                                        <path d="M17 7l-5 5l5 5" />
+                                    </svg>
+                                </a>
+                                <a href="#" class="inline-block px-2 py-px text-base font-semibold text-black bg-transparent border border-black rounded-md dark:text-white hover:border-neutral-700 hover:text-white hover:bg-neutral-700 dark:bg-transparent dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500">2</a>
+                                <a href="#" class="inline-block px-2 py-px text-base font-semibold text-black bg-transparent border border-black rounded-md dark:text-white hover:border-neutral-700 hover:text-white hover:bg-neutral-700 dark:bg-transparent dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500">3</a>
+                                <a href="#" class="inline-block px-2 py-px text-base font-semibold text-white bg-black border border-black rounded-md hover:border-neutral-700 hover:bg-neutral-700 dark:bg-neutral-600 dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500">4</a>
+                                <a href="#" class="inline-block px-2 py-px text-base font-semibold text-black bg-transparent border border-black rounded-md dark:text-white hover:border-neutral-700 hover:text-white hover:bg-neutral-700 dark:bg-transparent dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500">5</a>
+                                <a href="#" class="inline-block px-2 py-px text-base font-semibold text-black bg-transparent border border-black rounded-md dark:text-white hover:border-neutral-700 hover:text-white hover:bg-neutral-700 dark:bg-transparent dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500">6</a>
+                                <a href="#" class="inline-block p-px text-base font-semibold text-black bg-transparent border border-black rounded-md dark:text-white hover:border-neutral-700 hover:text-white hover:bg-neutral-700 dark:bg-transparent dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500" aria-label="Got to last">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M7 7l5 5l-5 5" />
+                                        <path d="M13 7l5 5l-5 5" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <p class="text-sm text-neutral-700 dark:text-neutral-300 lg:order-1">Showing 31 - 40 of 2310</p>
+                        </div>
+                    </div>
+                </section>
+                
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="absolute bottom-0 w-full max-w-screen-xl px-4 pb-px text-center transform -translate-x-1/2 left-1/2 sm:px-8">
+            <p class="text-sm text-neutral-700 dark:text-neutral-300"><span id="footer-app-name"></span> v<span id="footer-app-version"></span></p>
+            <span class="text-sm text-neutral-700 dark:text-neutral-300"><span id="footer-year"></span> © Developed by <a href="https://mkfizi.dev" target="_blank" class="inline-block font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">mkfizi</a></span>
+        </footer>
+    </div>
+</body>
+</html>

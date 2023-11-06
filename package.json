@@ -1,0 +1,19 @@
+{
+	"name": "@mkfizi/tailstart-dashboard",
+	"version": "0.1.0",
+	"description": "TailwindCSS library of multipurpose starter kits",
+	"keywords": [
+		"Tailwindcss",
+		"Starter Kit",
+		"Boilerplate"
+	],
+	"author": "hi@mkfizi.dev",
+	"license": "MIT",
+	"scripts": {
+		"build": "npx tailwindcss -i ./src/css/tailwind.css -o ./src/css/app.css ",
+		"watch": "npx tailwindcss -i ./src/css/tailwind.css -o ./src/css/app.css --watch"
+	},
+	"devDependencies": {
+		"tailwindcss": "^3.3.5"
+	}
+}
