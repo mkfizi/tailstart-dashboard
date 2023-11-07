@@ -12,6 +12,7 @@ TailwindCSS dashboard starter kit.
 * SEO-friendly metadata and social media tags: Includes relevant metadata and tags to optimize the website for search engines and improve social media sharing.
 * Sticky navbar with appearance toggle: Navbar remains fixed at the top of the page, and its appearance dynamically changes based on current scroll position.
 * Responsive menus with click outside, escape key and focus trap handler: Sidebar menu and dropdown menus are programmed with proper keyboard navigation and responsive behaviour on all screen sizes.
+* Sidebar menu with multi level links: Sidebar menu comes with multi level navigation links which appears as collapsible accordian.
 
 ## Installation
 Clone this repository to get started.
