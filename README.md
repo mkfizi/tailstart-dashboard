@@ -35,4 +35,4 @@ This starter kit serves as a boilerplate for creating web applications or sites.
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
-[MIT](https://github.com/mkfizi/tailstart-dashboard-alpinejs/blob/main/LICENSE)
+[MIT](https://github.com/mkfizi/tailstart-dashboard/blob/main/LICENSE)
