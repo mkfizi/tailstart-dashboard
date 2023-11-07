@@ -47,7 +47,7 @@
             toggle: () => {
                 if (app.element.navbar) {
                     const isScrolled = window.scrollY > 0;
-                    app.element.navbar.classList[isScrolled ? 'add' : 'remove']('border-neutral-200', 'dark:border-neutral-800', 'shadow');
+                    app.element.navbar.classList[isScrolled ? 'add' : 'remove']('border-neutral-300', 'dark:border-neutral-700', 'shadow');
                     app.element.navbar.classList[isScrolled ? 'remove' : 'add']('border-transparent', 'dark:border-transparent');
                 }
             },
