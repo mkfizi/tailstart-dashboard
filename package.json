@@ -1,19 +1,23 @@
 {
-	"name": "@mkfizi/tailstart-dashboard",
-	"version": "0.1.0",
-	"description": "TailwindCSS library of multipurpose starter kits",
+	"name": "@mkfizi/ui-layout-dashboard",
+	"version": "1.0.0",
+	"description": "Dashboard layout UI sandbox in Javascript and TailwindCSS.",
 	"keywords": [
 		"Tailwindcss",
-		"Starter Kit",
-		"Boilerplate"
+		"Javascript",
+		"Sandbox"
 	],
-	"author": "hi@mkfizi.dev",
 	"license": "MIT",
+	"author": "@mkfizi",
+	"type": "module",
 	"scripts": {
-		"build": "npx tailwindcss -i ./src/css/tailwind.css -o ./src/css/app.css ",
-		"watch": "npx tailwindcss -i ./src/css/tailwind.css -o ./src/css/app.css --watch"
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview"
 	},
 	"devDependencies": {
-		"tailwindcss": "^3.3.5"
+		"@tailwindcss/vite": "^4.0.10",
+		"tailwindcss": "^4.0.10",
+		"vite": "^6.2.1"
 	}
 }

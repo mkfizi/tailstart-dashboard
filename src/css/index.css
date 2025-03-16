@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+
+/**
+* Use manual selector insted of media query for dark theme .
+*/
+@custom-variant dark (&:where(.dark, .dark *));
