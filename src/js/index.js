@@ -19,6 +19,9 @@
         themeLightButton: document.getElementById('theme-light-button'),
         themeDarkButton: document.getElementById('theme-dark-button'),
         themeSystemButton: document.getElementById('theme-system-button'),
+        footerAppName: document.getElementById('footer-app-name'),
+        footerAppVersion: document.getElementById('footer-app-version'),
+        footerAppYear: document.getElementById('footer-app-year'),
     }
 
     app.component = {
@@ -188,6 +191,20 @@
             }
         },
 
+        footer: {
+            init: () => {
+                if (app.element.footerAppName) {
+                    app.element.footerAppName.innerHTML = app.name;
+                }
+                if (app.element.footerAppVersion) {
+                    app.element.footerAppVersion.innerHTML = app.version;
+                }
+                if (app.element.footerAppYear) {
+                    app.element.footerAppYear.innerHTML = new Date().getFullYear();
+                }
+            }
+        },
+
         utility: {
             forceFocus: (element) => {
                 element.setAttribute('tabindex', 1);
@@ -282,6 +299,7 @@
 
                 app.component.darkMode.updateTheme();
                 app.component.darkMode.updateButton();
+                app.component.footer.init();
             }
         },
 

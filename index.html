@@ -62,217 +62,224 @@
         
         <title>UI Layout | Dashboard</title>
     </head>
-    <body class="relative bg-white dark:bg-neutral-950 min-h-dvh antialiased">
-        <div class="relative flex">
+    <body class="relative flex bg-white dark:bg-neutral-950 min-h-dvh antialiased">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="hidden invisible lg:block top-0 left-0 z-20 fixed lg:sticky bg-black/80 lg:bg-transparent w-dvw lg:w-64 h-dvh lg:visible lg:shrink-0">
+            <div class="top-0 left-0 fixed bg-white dark:bg-neutral-950 p-4 border-neutral-200 dark:border-neutral-800 border-r w-72 lg:w-64 h-full overflow-y-auto" aria-labelledby="sidebar">
+                <a href="#" class="font-medium text-black hover:text-neutral-700 hover:dark:text-neutral-200 dark:text-white text-sm cursor-pointer">Dashboard</a>
+                <button id="sidebar-close-button" type="button" class="lg:hidden top-2 right-2 absolute hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:bg-neutral-100 dark:focus:bg-neutral-800 disabled:opacity-60 p-2 rounded font-medium text-black dark:text-white text-sm cursor-pointer disabled:pointer-events-none" aria-controls="sidebar" aria-expanded="false" aria-label="Close sidebar.">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-black dark:stroke-white w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M18 6l-12 12" />
+                        <path d="M6 6l12 12" />
+                    </svg>
+                </button>
+                <div class="space-y-4 mt-8">
+                    <ul class="space-y-1 leading-0">
+                        <li>
+                            <a href="#" class="inline-block bg-neutral-100 dark:bg-neutral-800 p-2 rounded w-full font-medium text-black dark:text-white text-sm text-left">Dashboard</a>
+                        </li>
+                    </ul>
+                    <p class="font-medium text-neutral-800 dark:text-neutral-200 text-xs uppercase">Category</p>
+                    <ul class="space-y-1 leading-0">
+                        <li>
+                            <a href="#" class="inline-block bg-neutral-100 dark:bg-neutral-800 p-2 rounded w-full font-medium text-black dark:text-white text-sm text-left">Product</a>
+                        </li>
+                        <li>
+                            <a href="#" class="inline-block hover:bg-neutral-100 dark:hover:bg-neutral-800 p-2 rounded w-full font-medium text-black dark:text-white text-sm text-left">Invoice</a>
+                        </li>
+                        <li>
+                            <a href="#" class="inline-block hover:bg-neutral-100 dark:hover:bg-neutral-800 p-2 rounded w-full font-medium text-black dark:text-white text-sm text-left">Order</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+        <!-- END Sidebar -->
 
-            <!-- Sidebar -->
-            <aside id="sidebar" class="hidden invisible lg:block top-0 left-0 z-20 fixed lg:sticky bg-black/80 lg:bg-transparent w-dvw lg:w-64 h-dvh lg:visible lg:shrink-0">
-                <div class="top-0 left-0 fixed bg-white dark:bg-neutral-950 p-4 border-neutral-200 dark:border-neutral-800 border-r w-72 lg:w-64 h-full overflow-y-auto" aria-labelledby="sidebar">
-                    <a href="#" class="font-medium text-black hover:text-neutral-700 hover:dark:text-neutral-200 dark:text-white text-sm cursor-pointer">Sidebar</a>
-                    <button id="sidebar-close-button" type="button" class="lg:hidden top-2 right-2 absolute hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:bg-neutral-100 dark:focus:bg-neutral-800 disabled:opacity-60 p-2 rounded font-medium text-black dark:text-white text-sm cursor-pointer disabled:pointer-events-none" aria-controls="sidebar" aria-expanded="false" aria-label="Close sidebar.">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-black dark:stroke-white w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div class="relative flex-auto w-full">
+
+            <!-- Navbar -->
+            <nav id="navbar" class="top-0 z-10 sticky bg-white dark:bg-neutral-950 border-transparent dark:border-transparent border-b">
+                <div class="flex justify-between lg:justify-end items-center mx-auto px-4 lg:px-8 py-2">
+
+                    <!-- Sidebar Button -->
+                    <button id="sidebar-open-button" type="button" class="lg:hidden hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:bg-neutral-100 dark:focus:bg-neutral-800 disabled:opacity-60 p-2 rounded font-medium text-black dark:text-white text-sm cursor-pointer disabled:pointer-events-none" aria-controls="sidebar" aria-expanded="false" aria-label="Open sidebar.">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-black dark:stroke-white w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M18 6l-12 12" />
-                            <path d="M6 6l12 12" />
+                            <path d="M4 6l16 0" />
+                            <path d="M4 12l16 0" />
+                            <path d="M4 18l16 0" />
                         </svg>
                     </button>
-                    <div class="space-y-4 mt-8">
-                        <ul class="space-y-1 leading-0">
-                            <li>
-                                <a href="#" class="inline-block bg-neutral-100 dark:bg-neutral-800 p-2 rounded w-full font-medium text-black dark:text-white text-sm text-left">Dashboard</a>
-                            </li>
-                        </ul>
-                        <p class="font-medium text-neutral-800 dark:text-neutral-200 text-xs uppercase">Orders</p>
-                        <ul class="space-y-1 leading-0">
-                            <li>
-                                <a href="#" class="inline-block bg-neutral-100 dark:bg-neutral-800 p-2 rounded w-full font-medium text-black dark:text-white text-sm text-left">Product</a>
-                            </li>
-                            <li>
-                                <a href="#" class="inline-block hover:bg-neutral-100 dark:hover:bg-neutral-800 p-2 rounded w-full font-medium text-black dark:text-white text-sm text-left">Invoice</a>
-                            </li>
-                            <li>
-                                <a href="#" class="inline-block hover:bg-neutral-100 dark:hover:bg-neutral-800 p-2 rounded w-full font-medium text-black dark:text-white text-sm text-left">Category</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </aside>
-            <!-- END Sidebar -->
-
-            <div class="relative flex-auto w-full">
-                <!-- Navbar -->
-                <nav id="navbar" class="top-0 z-10 sticky bg-white dark:bg-neutral-950 border-transparent dark:border-transparent border-b">
-                    <div class="flex justify-between lg:justify-end items-center mx-auto px-4 lg:px-8 py-2">
-
-                        <!-- Sidebar Button -->
-                        <button id="sidebar-open-button" type="button" class="lg:hidden hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:bg-neutral-100 dark:focus:bg-neutral-800 disabled:opacity-60 p-2 rounded font-medium text-black dark:text-white text-sm cursor-pointer disabled:pointer-events-none" aria-controls="sidebar" aria-expanded="false" aria-label="Open sidebar.">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-black dark:stroke-white w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- END Sidebar Button -->
+                    
+                    <div class="relative flex gap-2">
+                        <!-- Notifications Menu Button -->
+                        <button id="notifications-menu-toggle-button" type="button" class="relative hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:bg-neutral-100 dark:focus:bg-neutral-800 disabled:opacity-60 p-2 rounded font-medium text-black dark:text-white text-sm cursor-pointer disabled:pointer-events-none" aria-controls="notifications-menu" aria-expanded="false" aria-label="Toggle notifications menu.">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-black dark:stroke-white w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M4 6l16 0" />
-                                <path d="M4 12l16 0" />
-                                <path d="M4 18l16 0" />
+                                <path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
+                                <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
+                            </svg>
+                            <div class="top-1 right-1 absolute bg-red-500 rounded-full w-2 h-2"></div>
+                        </button>
+                        <!-- END Notifications Menu Button -->
+
+                        <!-- Dark Mode Menu Button -->
+                        <button id="dark-mode-menu-toggle-button" type="button" class="hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:bg-neutral-100 dark:focus:bg-neutral-800 disabled:opacity-60 p-2 rounded font-medium text-black dark:text-white text-sm cursor-pointer disabled:pointer-events-none" aria-controls="dark-mode-menu" aria-expanded="false" aria-label="Toggle dark mode menu.">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="dark:hidden stroke-black w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z"></path>
+                                <path d="M6.343 17.657l-1.414 1.414"></path>
+                                <path d="M6.343 6.343l-1.414 -1.414"></path>
+                                <path d="M17.657 6.343l1.414 -1.414"></path>
+                                <path d="M17.657 17.657l1.414 1.414"></path>
+                                <path d="M4 12h-2"></path>
+                                <path d="M12 4v-2"></path>
+                                <path d="M20 12h2"></path>
+                                <path d="M12 20v2"></path>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="hidden dark:block stroke-white w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+                                <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"></path>
+                                <path d="M19 11h2m-1 -1v2"></path>
                             </svg>
                         </button>
-                        <!-- END Sidebar Button -->
-                        
-                        <div class="relative flex gap-2">
-                            <!-- Notifications Menu Button -->
-                            <button id="notifications-menu-toggle-button" type="button" class="relative hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:bg-neutral-100 dark:focus:bg-neutral-800 disabled:opacity-60 p-2 rounded font-medium text-black dark:text-white text-sm cursor-pointer disabled:pointer-events-none" aria-controls="notifications-menu" aria-expanded="false" aria-label="Toggle notifications menu.">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-black dark:stroke-white w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                    <path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
-                                    <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
-                                </svg>
-                                <div class="top-1 right-1 absolute bg-red-500 rounded-full w-2 h-2"></div>
-                            </button>
-                            <!-- END Notifications Menu Button -->
+                        <!-- END Navbar Menu Button -->
 
-                            <!-- Dark Mode Menu Button -->
-                            <button id="dark-mode-menu-toggle-button" type="button" class="hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:bg-neutral-100 dark:focus:bg-neutral-800 disabled:opacity-60 p-2 rounded font-medium text-black dark:text-white text-sm cursor-pointer disabled:pointer-events-none" aria-controls="dark-mode-menu" aria-expanded="false" aria-label="Toggle dark mode menu.">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="dark:hidden stroke-black w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z"></path>
-                                    <path d="M6.343 17.657l-1.414 1.414"></path>
-                                    <path d="M6.343 6.343l-1.414 -1.414"></path>
-                                    <path d="M17.657 6.343l1.414 -1.414"></path>
-                                    <path d="M17.657 17.657l1.414 1.414"></path>
-                                    <path d="M4 12h-2"></path>
-                                    <path d="M12 4v-2"></path>
-                                    <path d="M20 12h2"></path>
-                                    <path d="M12 20v2"></path>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="hidden dark:block stroke-white w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
-                                    <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"></path>
-                                    <path d="M19 11h2m-1 -1v2"></path>
-                                </svg>
-                            </button>
-                            <!-- END Navbar Menu Button -->
+                        <button id="navbar-menu-toggle-button" type="button" class="hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:bg-neutral-100 dark:focus:bg-neutral-800 disabled:opacity-60 p-2 rounded font-medium text-black dark:text-white text-sm cursor-pointer disabled:pointer-events-none" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navbar menu.">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-black dark:stroke-white w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                            </svg>
+                        </button>
+                        <!-- END Navbar Menu Button -->
 
-                            <button id="navbar-menu-toggle-button" type="button" class="hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:bg-neutral-100 dark:focus:bg-neutral-800 disabled:opacity-60 p-2 rounded font-medium text-black dark:text-white text-sm cursor-pointer disabled:pointer-events-none" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navbar menu.">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-black dark:stroke-white w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                    <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                                    <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                                    <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                                </svg>
-                            </button>
-                            <!-- END Navbar Menu Button -->
-
-                            <div class="top-12 right-0 absolute 0">
-                                <!-- Notifications Menu -->
-                                <div id="notifications-menu" class="hidden invisible right-0 z-10 absolute bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded w-72" inert>
-                                    <ul class="space-y-1 p-1 leading-0">
-                                        <li>
-                                            <a href="#" class="inline-block space-y-1 hover:bg-neutral-100 dark:hover:bg-neutral-800 px-3 py-2 rounded w-full text-black dark:text-white text-sm text-left">
-                                                <span class="block">You have received a new sale order.</span>
-                                                <span class="block text-right"><small>30 minutes ago</small></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="inline-block space-y-1 hover:bg-neutral-100 dark:hover:bg-neutral-800 px-3 py-2 rounded w-full text-black dark:text-white text-sm text-left">
-                                                <span class="block">You have received a new sale order.</span>
-                                                <span class="block text-right"><small>1 hour ago</small></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="inline-block space-y-1 hover:bg-neutral-100 dark:hover:bg-neutral-800 px-3 py-2 rounded w-full text-black dark:text-white text-sm text-left">
-                                                <span class="block">You have received a new sale order.</span>
-                                                <span class="block text-right"><small>4 hours ago</small></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <hr class="border-neutral-200 dark:border-neutral-800"/>
-                                    <ul class="space-y-1 p-1 leading-0">
-                                        <li>
-                                            <a href="#" class="inline-block hover:bg-neutral-100 dark:hover:bg-neutral-800 px-3 py-2 rounded w-full font-medium text-black dark:text-white text-sm text-left">View All Notifications</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- END Notifications Menu -->
-
-                                <!-- Dark Mode Menu -->
-                                <div id="dark-mode-menu" class="hidden invisible right-0 z-10 absolute bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded w-36" inert>
-                                    <ul class="space-y-1 p-1 leading-0">
-                                        <li>
-                                            <button id="theme-light-button" type="button" class="flex items-center gap-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 px-3 py-2 rounded w-full font-medium text-black dark:text-white text-sm text-left" aria-labelledby="theme-light" aria-controls="dark-mode-menu" aria-expanded="false" aria-label="Set theme to light mode.">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-black dark:stroke-white w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                    <path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z"></path>
-                                                    <path d="M6.343 17.657l-1.414 1.414"></path>
-                                                    <path d="M6.343 6.343l-1.414 -1.414"></path>
-                                                    <path d="M17.657 6.343l1.414 -1.414"></path>
-                                                    <path d="M17.657 17.657l1.414 1.414"></path>
-                                                    <path d="M4 12h-2"></path>
-                                                    <path d="M12 4v-2"></path>
-                                                    <path d="M20 12h2"></path>
-                                                    <path d="M12 20v2"></path>
-                                                </svg>
-                                                <span>Light</span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button id="theme-dark-button" type="button" class="flex items-center gap-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 px-3 py-2 rounded w-full font-medium text-black dark:text-white text-sm text-left" aria-labelledby="theme-dark" aria-controls="dark-mode-menu" aria-expanded="false" aria-label="Set theme to dark mode.">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-black dark:stroke-white w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                    <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
-                                                    <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"></path>
-                                                    <path d="M19 11h2m-1 -1v2"></path>
-                                                </svg>                                  
-                                                <span>Dark</span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button id="theme-system-button" type="button" class="flex items-center gap-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 px-3 py-2 rounded w-full font-medium text-black dark:text-white text-sm text-left" aria-labelledby="theme-system"  aria-controls="dark-mode-menu" aria-expanded="false" aria-label="Set theme to dark mode.">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-black dark:stroke-white w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                    <path d="M3 5a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1v-10z"></path>
-                                                    <path d="M7 20h10"></path>
-                                                    <path d="M9 16v4"></path>
-                                                    <path d="M15 16v4"></path>
-                                                </svg>
-                                                
-                                                <span>System</span>
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- END Dark Mode Menu -->
-
-                                <!-- Navbar Menu -->
-                                <div id="navbar-menu" class="hidden invisible right-0 z-10 absolute bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded w-48" inert>
-                                    <ul class="space-y-1 p-1 leading-0">
-                                        <li>
-                                            <a href="#" class="inline-block hover:bg-neutral-100 dark:hover:bg-neutral-800 px-3 py-2 rounded w-full font-medium text-black dark:text-white text-sm text-left">Profile</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="inline-block hover:bg-neutral-100 dark:hover:bg-neutral-800 px-3 py-2 rounded w-full font-medium text-black dark:text-white text-sm text-left">Settings</a>
-                                        </li>
-                                    </ul>
-                                    <hr class="border-neutral-200 dark:border-neutral-800"/>
-                                    <ul class="space-y-1 p-1 leading-0">
-                                        <li>
-                                            <a href="#" class="inline-block hover:bg-neutral-100 dark:hover:bg-neutral-800 px-3 py-2 rounded w-full font-medium text-black dark:text-white text-sm text-left">Logout</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- END Navbar Menu -->
-
+                        <div class="top-12 right-0 absolute 0">
+                            <!-- Notifications Menu -->
+                            <div id="notifications-menu" class="hidden invisible right-0 z-10 absolute bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded w-72" inert>
+                                <ul class="space-y-1 p-1 leading-0">
+                                    <li>
+                                        <a href="#" class="inline-block space-y-1 hover:bg-neutral-100 dark:hover:bg-neutral-800 px-3 py-2 rounded w-full text-black dark:text-white text-sm text-left">
+                                            <span class="block">You have received a new sale order.</span>
+                                            <span class="block text-right"><small>30 minutes ago</small></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="inline-block space-y-1 hover:bg-neutral-100 dark:hover:bg-neutral-800 px-3 py-2 rounded w-full text-black dark:text-white text-sm text-left">
+                                            <span class="block">You have received a new sale order.</span>
+                                            <span class="block text-right"><small>1 hour ago</small></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="inline-block space-y-1 hover:bg-neutral-100 dark:hover:bg-neutral-800 px-3 py-2 rounded w-full text-black dark:text-white text-sm text-left">
+                                            <span class="block">You have received a new sale order.</span>
+                                            <span class="block text-right"><small>4 hours ago</small></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <hr class="border-neutral-200 dark:border-neutral-800"/>
+                                <ul class="space-y-1 p-1 leading-0">
+                                    <li>
+                                        <a href="#" class="inline-block hover:bg-neutral-100 dark:hover:bg-neutral-800 px-3 py-2 rounded w-full font-medium text-black dark:text-white text-sm text-left">View All Notifications</a>
+                                    </li>
+                                </ul>
                             </div>
+                            <!-- END Notifications Menu -->
+
+                            <!-- Dark Mode Menu -->
+                            <div id="dark-mode-menu" class="hidden invisible right-0 z-10 absolute bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded w-36" inert>
+                                <ul class="space-y-1 p-1 leading-0">
+                                    <li>
+                                        <button id="theme-light-button" type="button" class="flex items-center gap-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 px-3 py-2 rounded w-full font-medium text-black dark:text-white text-sm text-left" aria-labelledby="theme-light" aria-controls="dark-mode-menu" aria-expanded="false" aria-label="Set theme to light mode.">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-black dark:stroke-white w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z"></path>
+                                                <path d="M6.343 17.657l-1.414 1.414"></path>
+                                                <path d="M6.343 6.343l-1.414 -1.414"></path>
+                                                <path d="M17.657 6.343l1.414 -1.414"></path>
+                                                <path d="M17.657 17.657l1.414 1.414"></path>
+                                                <path d="M4 12h-2"></path>
+                                                <path d="M12 4v-2"></path>
+                                                <path d="M20 12h2"></path>
+                                                <path d="M12 20v2"></path>
+                                            </svg>
+                                            <span>Light</span>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button id="theme-dark-button" type="button" class="flex items-center gap-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 px-3 py-2 rounded w-full font-medium text-black dark:text-white text-sm text-left" aria-labelledby="theme-dark" aria-controls="dark-mode-menu" aria-expanded="false" aria-label="Set theme to dark mode.">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-black dark:stroke-white w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+                                                <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"></path>
+                                                <path d="M19 11h2m-1 -1v2"></path>
+                                            </svg>                                  
+                                            <span>Dark</span>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button id="theme-system-button" type="button" class="flex items-center gap-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 px-3 py-2 rounded w-full font-medium text-black dark:text-white text-sm text-left" aria-labelledby="theme-system"  aria-controls="dark-mode-menu" aria-expanded="false" aria-label="Set theme to dark mode.">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-black dark:stroke-white w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M3 5a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1v-10z"></path>
+                                                <path d="M7 20h10"></path>
+                                                <path d="M9 16v4"></path>
+                                                <path d="M15 16v4"></path>
+                                            </svg>
+                                            
+                                            <span>System</span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- END Dark Mode Menu -->
+
+                            <!-- Navbar Menu -->
+                            <div id="navbar-menu" class="hidden invisible right-0 z-10 absolute bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded w-48" inert>
+                                <ul class="space-y-1 p-1 leading-0">
+                                    <li>
+                                        <a href="#" class="inline-block hover:bg-neutral-100 dark:hover:bg-neutral-800 px-3 py-2 rounded w-full font-medium text-black dark:text-white text-sm text-left">Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="inline-block hover:bg-neutral-100 dark:hover:bg-neutral-800 px-3 py-2 rounded w-full font-medium text-black dark:text-white text-sm text-left">Settings</a>
+                                    </li>
+                                </ul>
+                                <hr class="border-neutral-200 dark:border-neutral-800"/>
+                                <ul class="space-y-1 p-1 leading-0">
+                                    <li>
+                                        <a href="#" class="inline-block hover:bg-neutral-100 dark:hover:bg-neutral-800 px-3 py-2 rounded w-full font-medium text-black dark:text-white text-sm text-left">Logout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- END Navbar Menu -->
+
                         </div>
                     </div>
-                </nav>
-                <!-- END Navbar -->
+                </div>
+            </nav>
+            <!-- END Navbar -->
 
-                 <!-- Content -->
-                <main class="mx-auto my-32 px-4 sm:px-8 w-full max-w-screen-sm">
-                    <div class="p-4 border border-neutral-200 dark:border-neutral-800 rounded h-dvh overflow-hidden">
-                        <p class="text-neutral-800 dark:text-neutral-200 text-sm">This is a content text.</p>
-                    </div>
-                </main>
-                <!-- END Content -->
-            </div>
+            <!-- Content -->
+            <main class="mx-auto px-4 sm:px-8 pt-16 pb-32 w-full xl:max-w-screen-xl">
+
+                <p class="font-bold text-black dark:text-white text-2xl sm:text-3xl lg:text-4xl">Dashboard</p>
+                <div class="mt-8 p-4 border border-neutral-200 dark:border-neutral-800 rounded h-64 overflow-hidden">
+                    <p class="text-neutral-800 dark:text-neutral-200 text-sm">This is a content text.</p>
+                </div>
+            </main>
+            <!-- END Content -->
+
+            <!-- Footer -->
+            <footer class="bottom-0 left-1/2 absolute px-4 sm:px-8 pb-px w-full max-w-screen-xl text-center -translate-x-1/2 transform">
+                <p class="text-neutral-800 dark:text-neutral-200 text-sm"><span id="footer-app-name"></span> v<span id="footer-app-version"></span></p>
+                <span class="text-neutral-800 dark:text-neutral-200 text-sm"><span id="footer-app-year"></span> © Developed by <a href="https://mkfizi.dev" target="_blank" class="font-medium text-neutral-500 hover:text-black hover:dark:text-white dark:text-neutral-400 text-sm cursor-pointer">mkfizi</a></span>
+            </footer>
+            <!-- END Footer -->
         </div>
     </body>
         

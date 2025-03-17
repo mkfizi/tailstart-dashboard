@@ -16,6 +16,20 @@ Types of changes:
 ## [Unreleased]
 Put unreleased changes here.
 
+## [0.1.0] - 2025-03-18
+### Added
+- Vite configuration.
+
+### Changed
+- Renamed project to `UI Layout | Dashboard` as part of `@mkfizi/ui` sandbox.
+- Update TailwindCSS to v4.
+- Redefine component styles.
+- Renamed `app.js` to `index.js`.
+- `404.html` content.
+
+### Removed
+- Accordion component.
+
 ## [0.1.0] - 2023-11-07
 ### Added
 - First release.
