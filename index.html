@@ -7,13 +7,11 @@
          <meta name="viewport" content="width=device-width, initial-scale=1.0">
          <meta name="theme-color" content="#ffffff">
          <!-- END Metadata -->
- 
          <!-- SEO -->
          <meta name="title" content="UI Layout | Dashboard">
          <meta name="description" content="Dashboard layout UI sandbox in Javascript and TailwindCSS.">
          <meta name="robots" content="index, follow">
          <!-- END SEO -->
-     
          <!-- Facebook Open Graph -->
          <meta property="og:url" content="https://mkfizi.dev">
          <meta property="og:type" content="website">
@@ -22,7 +20,6 @@
          <meta property="og:description" content="Dashboard layout UI sandbox in Javascript and TailwindCSS.">
          <meta property="og:site_name" content="UI Layout | Dashboard">
          <!-- END Facebook Open Graph -->
- 
          <!-- Twitter Card -->
          <meta name="twitter:card" content="summary">
          <meta name="twitter:site" content="@mkfizi">
@@ -32,7 +29,6 @@
          <meta name="twitter:description" content="Dashboard layout UI sandbox in Javascript and TailwindCSS.">
          <meta name="twitter:image" content="path/to/img/meta-card.jpg">
          <!-- END Twitter Card -->
- 
          <!-- Favicon -->
          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -41,39 +37,36 @@
          <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
          <link rel="manifest" href="/site.webmanifest">
          <!-- END Favicon -->
- 
-         <!-- Styles -->
+         <!-- Style -->
          <link rel="preload" href="./src/css/index.css" as="style">
          <link rel="stylesheet" href="./src/css/index.css">
-         <!-- END Styles -->
- 
-         <!-- Scripts -->
+         <!-- END Style -->
+         <!-- Script -->
          <link rel="preload" href="./src/js/index.js" as="script">
          <script src="./src/js/index.js" type="module" defer></script>
-         <!-- END Scripts -->
- 
-         <!-- Inline code to avoid FOUC -->
+         <!-- END Script -->
+         <!-- Prevent FOUC -->
          <script>
-             // Toggle theme.
-             // localStorage.theme = 'dark';
              document.documentElement.classList.toggle('dark', localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches) || (localStorage.theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches));
          </script>
-         <!-- END Inline code to avoid FOUC --> 
-        
+         <!-- END Prevent FOUC --> 
         <title>UI Layout | Dashboard</title>
     </head>
     <body class="relative flex bg-white dark:bg-neutral-950 min-h-dvh antialiased">
         <!-- Sidebar -->
-        <aside id="sidebar" class="hidden invisible lg:block top-0 left-0 z-20 fixed lg:sticky bg-black/80 lg:bg-transparent w-dvw lg:w-64 h-dvh lg:visible lg:shrink-0">
+        <aside id="sidebar" class="hidden invisible lg:visible lg:block top-0 left-0 z-20 fixed lg:sticky bg-black/80 lg:bg-transparent w-dvw lg:w-64 h-dvh lg:shrink-0">
             <div class="top-0 left-0 fixed bg-white dark:bg-neutral-950 p-4 border-neutral-200 dark:border-neutral-800 border-r w-72 lg:w-64 h-full overflow-y-auto" aria-labelledby="sidebar">
-                <a href="#" class="font-medium text-black hover:text-neutral-700 hover:dark:text-neutral-200 dark:text-white text-sm cursor-pointer">Dashboard</a>
-                <button id="sidebar-close-button" type="button" class="lg:hidden top-2 right-2 absolute hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:bg-neutral-100 dark:focus:bg-neutral-800 disabled:opacity-60 p-2 rounded font-medium text-black dark:text-white text-sm cursor-pointer disabled:pointer-events-none" aria-controls="sidebar" aria-expanded="false" aria-label="Close sidebar.">
+                <a href="#" class="font-medium text-black hover:dark:text-neutral-200 hover:text-neutral-700 dark:text-white text-sm cursor-pointer">Dashboard</a>
+                <!-- Sidebar Close Button -->
+                <button id="sidebar-close-button" type="button" class="lg:hidden top-2 right-2 absolute hover:bg-neutral-100 focus:bg-neutral-100 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800 disabled:opacity-60 p-2 rounded font-medium text-black dark:text-white text-sm cursor-pointer disabled:pointer-events-none" aria-controls="sidebar" aria-expanded="false" aria-label="Close sidebar.">
                     <svg xmlns="http://www.w3.org/2000/svg" class="stroke-black dark:stroke-white w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <path d="M18 6l-12 12" />
                         <path d="M6 6l12 12" />
                     </svg>
                 </button>
+                <!-- END Sidebar Close Button -->
+                 <!-- Sidebar Menu -->
                 <div class="space-y-4 mt-8">
                     <ul class="space-y-1 leading-0">
                         <li>
@@ -83,7 +76,7 @@
                     <p class="font-medium text-neutral-800 dark:text-neutral-200 text-xs uppercase">Category</p>
                     <ul class="space-y-1 leading-0">
                         <li>
-                            <a href="#" class="inline-block bg-neutral-100 dark:bg-neutral-800 p-2 rounded w-full font-medium text-black dark:text-white text-sm text-left">Product</a>
+                            <a href="#" class="inline-block hover:bg-neutral-100 dark:hover:bg-neutral-800 p-2 rounded w-full font-medium text-black dark:text-white text-sm text-left">Product</a>
                         </li>
                         <li>
                             <a href="#" class="inline-block hover:bg-neutral-100 dark:hover:bg-neutral-800 p-2 rounded w-full font-medium text-black dark:text-white text-sm text-left">Invoice</a>
@@ -93,18 +86,16 @@
                         </li>
                     </ul>
                 </div>
+                <!-- END Sidebar Menu -->
             </div>
         </aside>
         <!-- END Sidebar -->
-
         <div class="relative flex-auto w-full">
-
             <!-- Navbar -->
             <nav id="navbar" class="top-0 z-10 sticky bg-white dark:bg-neutral-950 border-transparent dark:border-transparent border-b">
                 <div class="flex justify-between lg:justify-end items-center mx-auto px-4 lg:px-8 py-2">
-
                     <!-- Sidebar Button -->
-                    <button id="sidebar-open-button" type="button" class="lg:hidden hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:bg-neutral-100 dark:focus:bg-neutral-800 disabled:opacity-60 p-2 rounded font-medium text-black dark:text-white text-sm cursor-pointer disabled:pointer-events-none" aria-controls="sidebar" aria-expanded="false" aria-label="Open sidebar.">
+                    <button id="sidebar-open-button" type="button" class="lg:hidden hover:bg-neutral-100 focus:bg-neutral-100 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800 disabled:opacity-60 p-2 rounded font-medium text-black dark:text-white text-sm cursor-pointer disabled:pointer-events-none" aria-controls="sidebar" aria-expanded="false" aria-label="Open sidebar.">
                         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-black dark:stroke-white w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <path d="M4 6l16 0" />
@@ -113,10 +104,9 @@
                         </svg>
                     </button>
                     <!-- END Sidebar Button -->
-                    
                     <div class="relative flex gap-2">
                         <!-- Notifications Menu Button -->
-                        <button id="notifications-menu-toggle-button" type="button" class="relative hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:bg-neutral-100 dark:focus:bg-neutral-800 disabled:opacity-60 p-2 rounded font-medium text-black dark:text-white text-sm cursor-pointer disabled:pointer-events-none" aria-controls="notifications-menu" aria-expanded="false" aria-label="Toggle notifications menu.">
+                        <button id="notifications-menu-toggle-button" type="button" class="relative hover:bg-neutral-100 focus:bg-neutral-100 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800 disabled:opacity-60 p-2 rounded font-medium text-black dark:text-white text-sm cursor-pointer disabled:pointer-events-none" aria-controls="notifications-menu" aria-expanded="false" aria-label="Toggle notifications menu.">
                             <svg xmlns="http://www.w3.org/2000/svg" class="stroke-black dark:stroke-white w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
@@ -125,9 +115,8 @@
                             <div class="top-1 right-1 absolute bg-red-500 rounded-full w-2 h-2"></div>
                         </button>
                         <!-- END Notifications Menu Button -->
-
                         <!-- Dark Mode Menu Button -->
-                        <button id="dark-mode-menu-toggle-button" type="button" class="hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:bg-neutral-100 dark:focus:bg-neutral-800 disabled:opacity-60 p-2 rounded font-medium text-black dark:text-white text-sm cursor-pointer disabled:pointer-events-none" aria-controls="dark-mode-menu" aria-expanded="false" aria-label="Toggle dark mode menu.">
+                        <button id="dark-mode-menu-toggle-button" type="button" class="hover:bg-neutral-100 focus:bg-neutral-100 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800 disabled:opacity-60 p-2 rounded font-medium text-black dark:text-white text-sm cursor-pointer disabled:pointer-events-none" aria-controls="dark-mode-menu" aria-expanded="false" aria-label="Toggle dark mode menu.">
                             <svg xmlns="http://www.w3.org/2000/svg" class="dark:hidden stroke-black w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z"></path>
@@ -148,8 +137,7 @@
                             </svg>
                         </button>
                         <!-- END Navbar Menu Button -->
-
-                        <button id="navbar-menu-toggle-button" type="button" class="hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:bg-neutral-100 dark:focus:bg-neutral-800 disabled:opacity-60 p-2 rounded font-medium text-black dark:text-white text-sm cursor-pointer disabled:pointer-events-none" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navbar menu.">
+                        <button id="navbar-menu-toggle-button" type="button" class="hover:bg-neutral-100 focus:bg-neutral-100 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800 disabled:opacity-60 p-2 rounded font-medium text-black dark:text-white text-sm cursor-pointer disabled:pointer-events-none" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navbar menu.">
                             <svg xmlns="http://www.w3.org/2000/svg" class="stroke-black dark:stroke-white w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
@@ -158,8 +146,7 @@
                             </svg>
                         </button>
                         <!-- END Navbar Menu Button -->
-
-                        <div class="top-12 right-0 absolute 0">
+                        <div class="top-12 right-0 absolute mt-1 0">
                             <!-- Notifications Menu -->
                             <div id="notifications-menu" class="hidden invisible right-0 z-10 absolute bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded w-72" inert>
                                 <ul class="space-y-1 p-1 leading-0">
@@ -190,7 +177,6 @@
                                 </ul>
                             </div>
                             <!-- END Notifications Menu -->
-
                             <!-- Dark Mode Menu -->
                             <div id="dark-mode-menu" class="hidden invisible right-0 z-10 absolute bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded w-36" inert>
                                 <ul class="space-y-1 p-1 leading-0">
@@ -238,7 +224,6 @@
                                 </ul>
                             </div>
                             <!-- END Dark Mode Menu -->
-
                             <!-- Navbar Menu -->
                             <div id="navbar-menu" class="hidden invisible right-0 z-10 absolute bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded w-48" inert>
                                 <ul class="space-y-1 p-1 leading-0">
@@ -257,30 +242,25 @@
                                 </ul>
                             </div>
                             <!-- END Navbar Menu -->
-
                         </div>
                     </div>
                 </div>
             </nav>
             <!-- END Navbar -->
-
             <!-- Content -->
             <main class="mx-auto px-4 sm:px-8 pt-16 pb-32 w-full xl:max-w-screen-xl">
-
                 <p class="font-bold text-black dark:text-white text-2xl sm:text-3xl lg:text-4xl">Dashboard</p>
-                <div class="mt-8 p-4 border border-neutral-200 dark:border-neutral-800 rounded h-64 overflow-hidden">
+                <div class="mt-8 p-4 border border-neutral-200 dark:border-neutral-800 rounded h-dvh overflow-hidden">
                     <p class="text-neutral-800 dark:text-neutral-200 text-sm">This is a content text.</p>
                 </div>
             </main>
             <!-- END Content -->
-
             <!-- Footer -->
             <footer class="bottom-0 left-1/2 absolute px-4 sm:px-8 pb-px w-full max-w-screen-xl text-center -translate-x-1/2 transform">
-                <p class="text-neutral-800 dark:text-neutral-200 text-xs"><span id="footer-app-name"></span> v<span id="footer-app-version"></span></p>
-                <span class="text-neutral-800 dark:text-neutral-200 text-xs"><span id="footer-app-year"></span> © Developed by <a href="https://mkfizi.dev" target="_blank" class="font-medium text-neutral-500 hover:text-black hover:dark:text-white dark:text-neutral-400 text-sm cursor-pointer">mkfizi</a></span>
+                <p class="text-neutral-800 dark:text-neutral-200 text-xs"><span id="footer-app-name"></span>&nbsp;<span id="footer-app-version"></span></p>
+                <span class="text-neutral-800 dark:text-neutral-200 text-xs"><span id="footer-app-year"></span> © Developed by <a href="https://mkfizi.dev" target="_blank" class="font-medium text-neutral-500 hover:dark:text-white hover:text-black dark:text-neutral-400 text-sm cursor-pointer">mkfizi</a></span>
             </footer>
             <!-- END Footer -->
         </div>
     </body>
-        
 </html>
